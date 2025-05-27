@@ -15,7 +15,6 @@ public with sharing class ContactOpportunityHandler {
     private Boolean isValidAccount(Contact contact) {
         List<String> acceptedAccountTypes = new List<String>{'Customer - Direct', 'Customer - Channel'};
         
-        System.debug(contact.Account.Type);
         if (acceptedAccountTypes.contains(contact.Account.Type)) return true;
 
         return false;

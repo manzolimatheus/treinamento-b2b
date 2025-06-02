@@ -13,8 +13,13 @@ private class AddressIntegrationTest {
     @isTest
     static void addressIntegrationResultShouldBeNull() {
         Test.setMock(HttpCalloutMock.class, new ViaCepCalloutMock(true));
-        AddressIntegration integration = new AddressIntegration('13333333');
+        
+        try {
+            AddressIntegration integration = new AddressIntegration('13333333');
+            System.assert(false, 'This code should not be executed.');
+        } catch (Exception e) {
+            System.assertEquals('Integration fail', e.getMessage());
+        }
 
-        System.assert.isNull(integration.result.cep);
     }
 }
